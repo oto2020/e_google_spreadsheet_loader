@@ -11,7 +11,11 @@ class FileProcessor {
       const files = fs.readdirSync(this.directoryPath);
 
       // Фильтруем файлы по расширению
-      const txtFiles = files.filter(file => path.extname(file) === '.txt');
+      // Фильтрация файлов
+      const txtFiles = files.filter(file => 
+        path.extname(file) === '.txt' && 
+        path.basename(file, '.txt').startsWith('ftp.division.sales')
+      );
 
       if (txtFiles.length === 0) {
         throw new Error('No files found with the given extension.');
