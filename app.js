@@ -35,6 +35,7 @@ async function main () {
     }
     // console.log('Sums:', sums);
     await GoogleProcessor.writeCell(`${sheetName}!A1`, path.parse(FileProcessor.latestFilePath).name.split('ftp.division.sales ')[1]);
+    fs.unlinkSync(FileProcessor.latestFilePath);
   } catch (err) {
     console.error('Error:', err);
   }
@@ -43,8 +44,8 @@ async function main () {
 
 
 // Запуск функции main по таймеру каждые 5 минут (300000 миллисекунд)
-const interval = 30000; // 5 минут в миллисекундах
-
+const interval = 30000; // 30 секунд в миллисекундах
+main();
 setInterval(async () => {
   try {
     await main();
