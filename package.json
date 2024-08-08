@@ -1,0 +1,15 @@
+{
+  "name": "e_google_spreadshet_loader",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "igo4ek",
+  "license": "ISC",
+  "dependencies": {
+    "google-spreadsheet": "^4.1.1",
+    "googleapis": "^133.0.0"
+  }
+}
