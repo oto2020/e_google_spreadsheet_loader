@@ -8,11 +8,12 @@ const directoryPath = path.join(__dirname, '..', 'ftp');
 // Дать этому email право на редактирование wawka2002-gmail-com@my-project-igo4ek.iam.gserviceaccount.com
 // Ключ качать отсюда https://console.cloud.google.com/iam-admin/serviceaccounts/details/112611614223361347625;edit=true/keys?project=my-project-igo4ek
 async function main () {
-  const spreadsheetId ='1m-1wB4luSFEbxXmdqznXRBeMsJa2eGgy1nXzCnHalTQ'
-  const sheetName = '2024';
+  const spreadsheetId = '1m-1wB4luSFEbxXmdqznXRBeMsJa2eGgy1nXzCnHalTQ';
+  const sheetName = 'ftp.division.sales'; 
+  const filePrependName = sheetName + ' ';
 
   // Инициализация GoogleProcessor
-  await FileProcessor.init(directoryPath);
+  await FileProcessor.init(directoryPath, filePrependName);
   await GoogleProcessor.init(spreadsheetId);
   console.log(`GoogleProcessor успешно инициализирован!`);
 
@@ -34,7 +35,7 @@ async function main () {
       }
     }
     // console.log('Sums:', sums);
-    await GoogleProcessor.writeCell(`${sheetName}!A1`, path.parse(FileProcessor.latestFilePath).name.split('ftp.division.sales ')[1]);
+    await GoogleProcessor.writeCell(`${sheetName}!A1`, path.parse(FileProcessor.latestFilePath).name.split(filePrependName)[1]);
     fs.unlinkSync(FileProcessor.latestFilePath);
   } catch (err) {
     console.error('Error:', err);

@@ -5,7 +5,7 @@ class FileProcessor {
   static directoryPath = '';
   static latestFilePath = '';
 
-  static async init(directoryPath) {
+  static async init(directoryPath, filePrependName) {
     this.directoryPath = directoryPath;
     try {
       const files = fs.readdirSync(this.directoryPath);
@@ -14,7 +14,7 @@ class FileProcessor {
       // Фильтрация файлов
       const txtFiles = files.filter(file => 
         path.extname(file) === '.txt' && 
-        path.basename(file, '.txt').startsWith('ftp.division.sales')
+        path.basename(file, '.txt').startsWith(filePrependName)
       );
 
       if (txtFiles.length === 0) {
