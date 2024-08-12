@@ -75,15 +75,15 @@ async function main() {
 
 
 // Запуск функции main по таймеру каждые 5 минут (300000 миллисекунд)
-// const interval = 30000; // 30 секунд в миллисекундах
+const interval = 50000; // 50 секунд в миллисекундах
 main();
-// setInterval(async () => {
-//   try {
-//     await main();
-//   } catch (error) {
-//     console.error('Error occurred during main execution:', error);
-//   }
-// }, interval);
+setInterval(async () => {
+  try {
+    await main();
+  } catch (error) {
+    console.error('Error occurred during main execution:', error);
+  }
+}, interval);
 
 
 
